@@ -1,0 +1,67 @@
+:root.dark {
+  --risk-overview-card-bgc: rgba(243, 243, 243, 0.1);
+  --risk-overview-number-color: rgba(245, 245, 245, 1);
+  --risk-overview-label-color: rgba(201, 201, 201, 1);
+  --risk-overview-type-name-color: rgba(255, 255, 255, 1);
+  --risk-overview-row-border-color: rgba(46, 46, 46, 1);
+  --risk-overview-row-hover-border-color: rgba(46, 46, 46, 1);
+  --risk-overview-row-hover-bgc: rgba(46, 46, 46, 1);
+  --risk-overview-view-all-color: rgba(124, 164, 255, 1);
+  --risk-overview-status-open-color: rgba(255, 106, 106, 1);
+  --risk-overview-status-closed-color: rgba(0, 196, 93, 1);
+  --risk-overview-bar-blue: rgba(0, 141, 219, 1);
+  --risk-overview-bar-orange: #ffad4f;
+  --risk-overview-bar-green: #57d39a;
+  --risk-overview-track-bgc: rgba(255, 255, 255, 0.07);
+  --risk-overview-accent-color: #22d3c5;
+  --risk-overview-modal-overlay-bgc: rgba(0, 0, 0, 0.76);
+  --risk-overview-modal-bgc: #1a1a1a;
+  --risk-overview-modal-panel-bgc: #1f1f1f;
+  --risk-overview-modal-th-bgc: #252525;
+  --risk-overview-modal-border-color: rgba(161, 193, 196, 0.14);
+  --risk-overview-modal-hover-bgc: rgba(34, 211, 197, 0.035);
+  --risk-overview-modal-select-bgc: #171717;
+  --risk-overview-modal-select-color: #cbd7d8;
+  --risk-overview-modal-page-text-color: #94a7aa;
+  --risk-overview-modal-page-active-bgc: #1675a7;
+  --risk-overview-level-high-color: #ff7685;
+  --risk-overview-level-high-bgc: rgba(255, 84, 104, 0.11);
+  --risk-overview-level-medium-color: #ffc16e;
+  --risk-overview-level-medium-bgc: rgba(255, 173, 79, 0.1);
+  --risk-overview-level-low-color: #49e0d4;
+  --risk-overview-level-low-bgc: rgba(34, 211, 197, 0.1);
+}
+
+:root.light {
+  --risk-overview-card-bgc: rgba(255, 255, 255, 1);
+  --risk-overview-number-color: rgba(30, 30, 30, 1);
+  --risk-overview-label-color: rgba(98, 98, 98, 1);
+  --risk-overview-type-name-color: rgba(30, 30, 30, 1);
+  --risk-overview-row-border-color: rgba(198, 198, 198, 1);
+  --risk-overview-row-hover-border-color: rgba(198, 198, 198, 1);
+  --risk-overview-row-hover-bgc: rgba(245, 245, 245, 1);
+  --risk-overview-view-all-color: rgba(0, 103, 209, 1);
+  --risk-overview-status-open-color: rgba(221, 51, 54, 1);
+  --risk-overview-status-closed-color: rgba(0, 155, 73, 1);
+  --risk-overview-bar-blue: rgba(0, 141, 219, 1);
+  --risk-overview-bar-orange: #ffad4f;
+  --risk-overview-bar-green: #57d39a;
+  --risk-overview-track-bgc: rgba(233, 233, 233, 1);
+  --risk-overview-accent-color: #22d3c5;
+  --risk-overview-modal-overlay-bgc: rgba(0, 0, 0, 0.4);
+  --risk-overview-modal-bgc: #ffffff;
+  --risk-overview-modal-panel-bgc: #f5f7f8;
+  --risk-overview-modal-th-bgc: #f0f3f4;
+  --risk-overview-modal-border-color: rgba(0, 0, 0, 0.1);
+  --risk-overview-modal-hover-bgc: rgba(0, 103, 209, 0.04);
+  --risk-overview-modal-select-bgc: #ffffff;
+  --risk-overview-modal-select-color: #2d3e41;
+  --risk-overview-modal-page-text-color: #5a6c6e;
+  --risk-overview-modal-page-active-bgc: rgba(0, 103, 209, 1);
+  --risk-overview-level-high-color: rgba(221, 51, 54, 1);
+  --risk-overview-level-high-bgc: rgba(244, 112, 171, 0.15);
+  --risk-overview-level-medium-color: rgba(231, 195, 37, 1);
+  --risk-overview-level-medium-bgc: rgba(231, 195, 37, 0.15);
+  --risk-overview-level-low-color: rgba(0, 141, 219, 1);
+  --risk-overview-level-low-bgc: rgba(0, 141, 219, 0.1);
+}
