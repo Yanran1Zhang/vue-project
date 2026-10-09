@@ -1,0 +1,393 @@
+:global(:root.light) {
+  --event-card-bg: #ffffff;
+  --event-card-border: rgba(198, 198, 198, 1);
+  --event-text-color: rgba(30, 30, 30, 1);
+  --event-title-color: rgba(30, 30, 30, 1);
+  --event-num-label-color: rgba(29, 33, 41, 0.6);
+  --event-subtitle-color: #86909c;
+  --event-separator-color: rgba(0, 0, 0, 0.06);
+  --event-top-gradient: rgba(0, 0, 0, 0.02);
+  --event-field-label-color: #86909c;
+  --event-field-value-color: #1d2129;
+  --event-time-color: #86909c;
+  --event-idx-color: #86909c;
+  --event-idx-bg: linear-gradient(-0.75deg, rgba(229, 230, 235, 1) -51.281%, rgba(229, 230, 235, 0) 99.508%);
+  --event-scrollbar-color: rgba(198, 198, 198, 1);
+  --event-divider-color: rgba(233, 233, 233, 1);
+}
+
+// ====== 主题变量：dark ======
+:global(:root.dark) {
+  --event-card-bg: rgba(243, 243, 243, 0.1);
+  --event-card-border: rgba(46, 46, 46, 1);
+  --event-text-color: #fff;
+  --event-title-color: #fff;
+  --event-num-label-color: rgba(255, 255, 255, 0.55);
+  --event-subtitle-color: rgba(198, 198, 198, 1);
+  --event-separator-color: rgba(255, 255, 255, 0.06);
+  --event-top-gradient: rgba(255, 255, 255, 0.03);
+  --event-field-label-color: rgba(166, 166, 166, 1);
+  --event-field-value-color: rgba(245, 245, 245, 1);
+  --event-time-color: rgba(166, 166, 166, 1);
+  --event-idx-color: rgba(166, 166, 166, 1);
+  --event-idx-bg: linear-gradient(-0.75deg, rgba(64, 64, 64, 1) -51.281%, rgba(117, 117, 117, 0) 99.508%);
+  --event-scrollbar-color: rgba(98, 98, 98, 1);
+  --event-divider-color: rgba(46, 46, 46, 1);
+}
+
+.event-card {
+  width: 100%;
+  height: 100%;
+  color: var(--event-text-color);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--event-card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+// ====== 顶部区域 ======
+.event-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 10px;
+  background: linear-gradient(180deg, var(--event-top-gradient) 0%, transparent 100%);
+
+  .event-top-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .title-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--event-title-color);
+      letter-spacing: 1px;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: var(--event-field-label-color);
+      transition: background 0.2s;
+
+      &:hover {
+        background: var(--event-separator-color);
+      }
+    }
+  }
+
+  .event-top-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .event-num {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .num-label {
+    font-size: 14px;
+    color: var(--event-num-label-color);
+  }
+
+  .num-value {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  // 状态竖条
+  .status-bar {
+    display: inline-block;
+    width: 4px;
+    height: 12px;
+    border-radius: 1px;
+    padding-top: 4px;
+
+    &--processing {
+      background: #f53f3f;
+    }
+
+    &--closed {
+      background: #00d68f;
+    }
+  }
+}
+
+// ====== 分隔线 ======
+.event-separator {
+  height: 1px;
+  margin: 0 20px;
+  background: var(--event-separator-color);
+}
+
+// ====== 分隔标题 ======
+.event-middle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--event-subtitle-color);
+  padding: 8px 20px 6px;
+}
+
+// ====== 事件列表：左右50%布局 ======
+.event-list {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  padding: 0 20px 14px;
+  min-height: 0;
+}
+
+// ====== 卡片公共样式 ======
+.event-detail-card {
+  min-width: 0;
+  border: 1px solid var(--event-card-border);
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  // 选中态
+  &--selected {
+    border-color: #64aefe !important;
+  }
+
+  // 左侧详情卡片
+  &--full {
+    flex: 1;
+  }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    .detail-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 6px;
+      min-width: 0;
+    }
+
+    .detail-idx {
+      border-radius: 6px;
+      color: var(--event-idx-color);
+      background: var(--event-idx-bg);
+      font-size: 14px;
+      font-weight: 400;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .detail-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--event-title-color);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .detail-time {
+      font-size: 12px;
+      color: var(--event-time-color);
+      white-space: nowrap;
+    }
+
+    .detail-link {
+      font-size: 12px;
+      color: var(--event-scrollbar-color);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #64aefe;
+      }
+    }
+  }
+
+  .detail-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+
+    .detail-fields-row {
+      display: flex;
+      gap: 7px;
+      flex: 1;
+      min-height: 0;
+
+      .detail-field {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+      }
+    }
+
+    > .detail-field {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+  }
+
+  .detail-field {
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+    min-width: 0;
+
+    .field-label {
+      color: var(--event-field-label-color);
+      flex-shrink: 0;
+
+      &--en {
+        padding-right: 4px;
+      }
+    }
+
+    .field-value {
+      color: var(--event-field-value-color);
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    // fullCard 中含 \n 换行的字段需要支持换行显示
+    .event-detail-card--full & .field-value {
+      white-space: pre-line;
+    }
+  }
+
+  .detail-brief-row {
+    display: flex;
+    gap: 50px;
+    flex-shrink: 0;
+    padding-bottom: 5px;
+
+    .detail-field {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+.event-divider {
+  width: 1px;
+  height: 100%;
+  background-color: var(--event-divider-color);
+}
+
+// ====== 右侧卡片列表（可滚动） ======
+.event-brief-list {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 1px;
+  overflow-y: auto;
+
+  // 自定义滚动条
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: var(--event-scrollbar-color);
+  }
+
+  .event-detail-card--brief {
+    flex: none;
+    height: calc(50% - 4px);
+    justify-content: space-between;
+  }
+}
+
+// 溢出文本自定义 tooltip（teleport 到 body，需 unscoped）
+.overflow-tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 600px;
+  padding: 5px 11px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-radius: 4px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  pointer-events: none;
+
+  // 向上的小箭头（tooltip 在元素下方，箭头在 tooltip 顶部指向上方）
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  &.is-dark {
+    color: #fff;
+    background: #303133;
+
+    &::after {
+      border-bottom-color: #303133;
+    }
+  }
+
+  &.is-light {
+    color: #303133;
+    background: #fff;
+    border: 1px solid #e5eaf3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+    // 浅色主题：双层箭头（外层边框色 + 内层背景色）
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid #e5eaf3;
+    }
+
+    &::after {
+      top: -5px;
+      border-bottom-color: #fff;
+    }
+  }
+}

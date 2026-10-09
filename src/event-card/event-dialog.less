@@ -1,0 +1,326 @@
+// ====== dialog 主题变量：light（默认） ======
+:global(:root.light) {
+  --event-dialog-bg: #ffffff;
+  --event-dialog-content-bg: rgba(245, 245, 245, 1);
+  --event-dialog-text-color: rgba(30, 30, 30, 1);
+  --event-dialog-label-color: rgba(98, 98, 98, 1);
+  --event-dialog-border-color: rgba(98, 98, 98, 1);
+  --event-dialog-card-bg: rgba(233, 233, 233, 1);
+  --event-dialog-card-border: rgba(233, 233, 233, 1);
+  --event-dialog-script-border: rgba(198, 198, 198, 1);
+  --event-dialog-script-bg: rgba(233, 233, 233, 1);
+  --event-dialog-script-text: rgba(98, 98, 98, 1);
+  --event-dialog-path-icon-bg: rgba(166, 166, 166, 1);
+  --event-dialog-path-normal-border: rgba(198, 198, 198, 1);
+  --event-dialog-prompt-color: rgba(118, 118, 118, 1);
+  --event-dialog-time-color: rgba(0, 155, 73, 1);
+  --event-dialog-separator-color: rgba(0, 0, 0, 0.06);
+  --event-scrollbar-color: rgba(198, 198, 198, 1);
+}
+
+// ====== dialog 主题变量：dark ======
+:global(:root.dark) {
+  --event-dialog-bg: rgba(25, 25, 25, 1);
+  --event-dialog-content-bg: rgba(47, 47, 47, 1);
+  --event-dialog-text-color: rgba(245, 245, 245, 1);
+  --event-dialog-label-color: rgba(198, 198, 198, 1);
+  --event-dialog-border-color: rgba(98, 98, 98, 1);
+  --event-dialog-card-bg: rgba(25, 25, 25, 1);
+  --event-dialog-card-border: rgba(73, 73, 73, 1);
+  --event-dialog-script-border: rgba(73, 73, 73, 1);
+  --event-dialog-script-bg: rgba(25, 25, 25, 1);
+  --event-dialog-script-text: rgba(166, 166, 166, 1);
+  --event-dialog-path-icon-bg: rgba(98, 98, 98, 1);
+  --event-dialog-path-normal-border: rgba(98, 98, 98, 1);
+  --event-dialog-prompt-color: rgba(134, 134, 134, 1);
+  --event-dialog-time-color: rgba(0, 155, 73, 1);
+  --event-dialog-separator-color: rgba(255, 255, 255, 0.06);
+  --event-scrollbar-color: rgba(98, 98, 98, 1);
+}
+
+.dialog-tabs :deep(.el-tabs__nav-wrap::after) {
+  display: none;
+}
+
+.dialog-tabs :deep(.el-tabs__item) {
+  font-size: 16px;
+  color: var(--event-dialog-text-color);
+
+  &.is-active {
+    color: rgba(0, 115, 232, 1);
+  }
+}
+
+.event-dialog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .event-dialog-top-left {
+    .dialog-tabs {}
+  }
+
+  .event-dialog-top-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: var(--event-dialog-label-color);
+      transition: background 0.2s;
+
+      &:hover {
+        background: var(--event-dialog-separator-color);
+      }
+    }
+
+    .right-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 12px;
+      font-size: 14px;
+      color: rgba(0, 115, 232, 1);
+      border-radius: 4px;
+      cursor: pointer;
+
+      &--disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.event-detail-dialog :deep(.el-dialog__body) {
+  height: 650px;
+  overflow: hidden;
+}
+
+.event-dialog-content {
+  border-radius: 8px;
+  background: var(--event-dialog-content-bg);
+  width: 1160px;
+  height: 570px;
+  gap: 20px;
+  padding: 16px 20px;
+
+  // 综合分析
+  .event-dialog-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    .event-dialog-row {
+      box-sizing: border-box;
+      border: 1px solid var(--event-dialog-card-border);
+      border-radius: 12px;
+      background: var(--event-dialog-card-bg);
+      padding: 16px;
+      font-size: 14px;
+      font-weight: 400;
+      flex: 1;
+
+      .event-dialog-time-title {
+        color: var(--event-dialog-label-color);
+        padding-bottom: 8px;
+      }
+
+      .event-dialog-time-content {
+        color: var(--event-dialog-time-color);
+      }
+    }
+  }
+
+  .detail-field-content {
+    height: 460px;
+    overflow-y: auto;
+    margin-top: 16px;
+
+    .detail-field {
+      font-size: 14px;
+      font-weight: 400;
+      padding-bottom: 16px;
+
+      &:last-child {
+        padding-bottom: 20px;
+      }
+
+      .field-label {
+        padding-bottom: 8px;
+        color: var(--event-dialog-label-color);
+      }
+
+      .field-value {
+        color: var(--event-dialog-text-color);
+        white-space: pre-line;
+      }
+    }
+  }
+
+  // 故障路径分析
+  .error-path-big-title {
+    color: var(--event-dialog-label-color);
+    font-size: 12px;
+    font-weight: 400;
+    padding-bottom: 16px;
+  }
+
+  .error-path {
+    height: 510px;
+    overflow-y: auto;
+
+    .error-path-field {
+      gap: 12px;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--event-dialog-card-bg);
+      margin-bottom: 8px;
+
+      .error-path-title {
+        padding-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: var(--event-dialog-text-color);
+
+        .error-path-icon {
+          background: var(--event-dialog-path-icon-bg);
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+        }
+
+        .error-path-text {
+          padding-left: 4px;
+          color: var(--event-dialog-text-color);
+        }
+      }
+
+      .error-path-content {
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 0;
+
+        .error-path-item {
+          padding: 4px 12px 4px 12px;
+          box-sizing: border-box;
+          border-radius: 45px;
+        }
+
+        .error-path-item-red {
+          border: 1px solid rgba(221, 51, 54, 0.3);
+          background: rgba(221, 51, 54, 0.1);
+          color: rgba(221, 51, 54, 1);
+        }
+
+        .error-path-item-normal {
+          border: 1px solid var(--event-dialog-path-normal-border);
+          color: var(--event-dialog-text-color);
+        }
+
+        .error-path-arrow {
+          padding: 0 8px;
+          color: var(--event-dialog-label-color);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  // 恢复脚本参考
+  .script-prompt {
+    display: flex;
+    align-items: center;
+    color: var(--event-dialog-prompt-color);
+    font-size: 12px;
+    font-weight: 400;
+    padding-bottom: 12px;
+
+    .script-prompt-icon {
+      margin-right: 4px;
+      margin-top: 2px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .script-summary {
+    color: var(--event-dialog-text-color);
+    font-size: 14px;
+    padding-bottom: 20px;
+
+    .script-summary-title {
+      padding-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .script-summary-text {
+      color: var(--event-dialog-text-color);
+      font-weight: 400;
+    }
+  }
+
+  .script-import {
+    .script-import-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .script-import-text {
+        color: var(--event-dialog-text-color);
+        font-size: 14px;
+        font-weight: 700;
+
+        .script-type-label {
+          color: var(--event-dialog-label-color);
+          font-weight: 400;
+        }
+      }
+
+      .script-import-icon {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        color: var(--event-dialog-text-color);
+      }
+    }
+
+    .script-import-content {
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid var(--event-dialog-script-border);
+      border-radius: 12px;
+      background: var(--event-dialog-script-bg);
+      margin: 12px 0 20px 0;
+      height: 180px;
+      overflow-y: auto;
+      color: var(--event-dialog-script-text);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  }
+}
+
+// 自定义滚动条
+&::-webkit-scrollbar {
+  width: 4px;
+}
+
+&::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+&::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: var(--event-scrollbar-color);
+}

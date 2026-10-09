@@ -1,0 +1,410 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2026-2026. All rights reserved.
+ */
+
+.alarm-container {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  .alarm-card {
+    width: 100%;
+    opacity: 1;
+    background-color: var(--alarm-table-background-color);
+    border-radius: 8px;
+    height: 100%;
+    margin-bottom: 0;
+
+    .header {
+      display: flex;
+      position: relative;
+    }
+
+    .title {
+      position: relative;
+      top: 20px;
+      left: 20px;
+    }
+
+    .statistics {
+      display: flex;
+      position: absolute;
+      right: -10px;
+      top: 25px;
+      color: #626262;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .text {
+      display: inline-block;
+      position: relative;
+      bottom: 1px;
+      color: var(--alarm-statistics-text-color);
+    }
+
+    .quantity {
+      color: var(--alarm-statistics-total-text-color);
+      display: inline-block;
+      margin-left: 8px;
+      margin-right: 30px;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .legend {
+      width: 4px;
+      height: 12px;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .completed {
+      background-color: var(--alarm-diagnosis-status-completed-color);
+    }
+
+    .running {
+      background-color: var(--alarm-diagnosis-status-running-color);
+    }
+
+    .pending {
+      background-color: var(--alarm-diagnosis-status-pending-color);
+    }
+
+    .manual {
+      background-color: var(--alarm-diagnosis-status-manual-color);
+    }
+
+    .failed {
+      background-color: #df3437;
+    }
+  }
+
+  .card-main {
+    margin: 35px 20px 10px 20px;
+  }
+}
+
+.alarm-details {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 20px 0;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .content-alarm {
+    margin-bottom: 0px;
+  }
+
+  .normal-size {
+    width: 33%;
+    padding-bottom: 20px;
+  }
+
+  .break-word {
+    word-break: break-word;
+
+    img {
+      margin-bottom: 3px;
+      cursor: pointer;
+    }
+  }
+
+  .diagnosis-status-text {
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  .mt8 {
+    margin-bottom: 8px;
+    color: #626262;
+  }
+}
+
+:deep(.alarm-level) {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 8px;
+  border-radius: 4px;
+
+  &.info {
+    color: rgba(0, 141, 219, 1);
+    background: rgba(0, 141, 219, 0.1);
+  }
+
+  &.warn {
+    color: rgba(231, 195, 37, 1);
+    background: rgba(231, 195, 37, 0.15);
+  }
+
+  &.major {
+    color: rgba(242, 117, 0, 1);
+    background: rgba(242, 117, 0, 0.1);
+  }
+
+  &.critical {
+    color: var(--alarm-level-critical-color);
+    background: rgba(244, 112, 171, 0.15);
+  }
+}
+
+:deep(.diagnosis-status) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  margin-right: 7px;
+  display: inline-block;
+
+  &.completed {
+    background: var(--alarm-diagnosis-status-completed-color);
+  }
+
+  &.running {
+    background: var(--alarm-diagnosis-status-running-color);
+  }
+
+  &.pending {
+    background: var(--alarm-diagnosis-status-pending-color);
+  }
+
+  &.manual {
+    background: var(--alarm-diagnosis-status-manual-color);
+  }
+
+  &.failed {
+    background: #df3437;
+  }
+}
+
+:deep(.report-title) {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--alarm-statistics-total-text-color);
+  margin-right: 4px;
+}
+
+:deep(.report-subtitle) {
+  font-size: 12px;
+  color: var(--alarm-text-color);
+}
+
+:deep(.diagnosis-report) {
+  .report-wrapper {
+    border-radius: 8px;
+    display: flex;
+    padding-bottom: 0;
+    background-color: #f5f5f5;
+
+    .content {
+      flex: 1;
+    }
+  }
+
+  .procedure {
+    display: inline-block;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: 120px;
+    max-height: 420px;
+    overflow-y: auto;
+
+    .step-item:first-child {
+      margin-top: 10px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px 0 0 16px;
+      align-self: flex-start;
+    }
+
+    .step {
+      width: 24px;
+      height: 24px;
+      line-height: 22px;
+      text-align: center;
+      margin-right: 8px;
+      border-radius: 50%;
+      border: 1px solid #c6c6c6;
+      background-color: #f5f5f5;
+    }
+
+    .step.active {
+      color: #fff;
+      background: var(--alarm-diagnosis-report-step-active-color);
+      border: 1px solid var(--alarm-diagnosis-report-step-active-color);
+    }
+
+    .label {
+      color: #1e1e1e;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .label:hover {
+      color: var(--alarm-diagnosis-report-step-active-color) !important;
+    }
+
+    .label.active {
+      color: var(--alarm-diagnosis-report-step-active-color) !important;
+    }
+
+    .divider {
+      width: 1px;
+      height: 18px;
+      background-color: #c6c6c6;
+      position: relative;
+      left: 28px;
+      top: 3px;
+    }
+  }
+
+  .separate-line {
+    width: 1px;
+    height: 385px;
+    margin-top: 20px;
+    background-color: #c6c6c6;
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  .content {
+    padding: 16px 20px 20px 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    height: 420px;
+    overflow-y: auto;
+
+    .common-row {
+      margin-top: 14px;
+    }
+
+    .title {
+      width: 100%;
+      color: var(--alarm-diagnosis-report-text-color);
+      font-weight: 800;
+    }
+
+    .step {
+      width: 16px;
+      height: 16px;
+      line-height: 14px;
+      text-align: center;
+      margin-right: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      font-size: 12px;
+    }
+
+    .step.active {
+      color: #c6c6c6;
+      background: var(--alarm-diagnosis-report-step-active-color);
+    }
+
+    .label {
+      color: #626262;
+      display: inline-block;
+      line-height: 24px;
+      max-width: 95px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .info {
+      display: inline-block;
+      color: var(--alarm-diagnosis-report-text-color);
+      position: absolute;
+      left: 100px;
+      word-break: keep-all;
+      line-height: 24px;
+      white-space: pre-wrap;
+      width: 620px;
+      padding-bottom: 15px;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(166, 166, 166, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(166, 166, 166, 1);
+  }
+}
+
+// 深色主题，样式适配
+html.dark .diagnosis-report .report-wrapper,
+html.dark .alarm-details .content,
+html.dark .diagnosis-report .content {
+  background: rgba(47, 47, 47, 1);
+}
+
+html.dark .diagnosis-report .procedure .step {
+  color: rgba(198, 198, 198, 1);
+  border: 1px solid rgba(119, 119, 119, 1);
+  background: rgba(243, 243, 243, 0.2);
+}
+
+html.dark .diagnosis-report .procedure .label {
+  color: rgba(255, 255, 255, 1);
+}
+
+html.dark .diagnosis-report .procedure .divider,
+html.dark .diagnosis-report .separate-line {
+  background-color: rgba(119, 119, 119, 1);
+}
+
+html.dark .diagnosis-report {
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+html.dark .alarm-details .mt8 {
+  color: rgba(198, 198, 198, 1);
+}
+
+html.dark .diagnosis-report .content .label {
+  color: rgba(166, 166, 166, 1);
+}
+
+html.dark .diagnosis-report .procedure .step.active {
+  border: 1px solid rgba(0, 103, 209, 1);
+  background: rgba(0, 103, 209, 1);
+}
+
+html.dark .diagnosis-report .content .step.active {
+  border: 1px solid rgba(0, 103, 209, 1);
+  background: rgba(0, 103, 209, 1);
+}
+
+html.dark .diagnosis-report .content {
+  border: none;
+}
